@@ -1,0 +1,1 @@
+hum = audio_play_sound(snd_hum,1,false);
