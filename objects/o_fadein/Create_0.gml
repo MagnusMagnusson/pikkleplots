@@ -87,7 +87,7 @@ console_schedule = [
 	["P: > cd pikkles", 5],
 	["P:pikkles/ > ECHO configuration.xml", 5],
 	["P: > simnet connect $MAINFRAME_URL", 5],
-	["Connecting to mainframe", 30],
+	["Connecting to mainframe", 60],
 	["Mainframe connected", 5],
 	["P: > run prikkles.sim", 30],
 	["", 5],
@@ -99,3 +99,4 @@ console_schedule = [
 ]
 
 alarm[0] = 60;
+

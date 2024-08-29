@@ -46,6 +46,7 @@
     {"id":{"name":"o_text_input","path":"objects/o_text_input/o_text_input.yy",},},
     {"id":{"name":"rm_start","path":"rooms/rm_start/rm_start.yy",},},
     {"id":{"name":"macros","path":"scripts/macros/macros.yy",},},
+    {"id":{"name":"scr_profanities","path":"scripts/scr_profanities/scr_profanities.yy",},},
     {"id":{"name":"snd_c_chord","path":"sounds/snd_c_chord/snd_c_chord.yy",},},
     {"id":{"name":"snd_hum","path":"sounds/snd_hum/snd_hum.yy",},},
   ],
