@@ -49,7 +49,7 @@ if(stage == BOOTUP_STAGES.username){
 		if(is_profanity(user)){
 			mess = "Remember the human. Please enter another name";
 		} else {
-			save_init(user);
+			save(user);
 		}
 	} else if(keyboard_check_pressed(vk_left)){
 		cursor_pos = max(1, cursor_pos - 1);

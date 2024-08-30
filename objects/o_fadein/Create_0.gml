@@ -19,7 +19,7 @@ console_log = [];
 console_schedule = [
 	["Viking BIOS 4.0 Release 2.8.24 - Copyright 1995-2024 GMC Software LLC", 20],
 	["All Rights Reserved", 20],
-	["Initiating bootup sequence...", 60],
+	["Initiating boot sequence...", 60],
 	["", 10],
 	["CPU: Detected", 10],
 	["Memory Test OK", 10],
@@ -88,14 +88,14 @@ console_schedule = [
 	["P: > cd pikkles", 5],
 	["P:pikkles/ > ECHO configuration.xml", 5],
 	["P: > simnet connect $MAINFRAME_URL", 5],
-	["Connecting to mainframe", 60],
+	["Connecting to mainframe", 120],
 	["Mainframe connected", 5],
 	["P: > run prinkles.sim", 30],
 	["", 5],
-	["**************************", 5],
-	["	    prinkle PLOTS", 5],
-	[" A COMMUNITY SIMULATION BY Mr. MAGNUS    ", 5],
-	["**************************", 15],
+	["*************************************************************", 5],
+	["                      PRINKLE PLOTS", 5],
+	["            A COMMUNITY SIMULATION BY Mr. MAGNUS    ", 5],
+	["*************************************************************", 15],
 	["loading...", 300],
 ]
 
