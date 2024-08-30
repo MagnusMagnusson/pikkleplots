@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_prinkle",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_prinkle",
+  "parent":{
+    "name":"prikkle",
+    "path":"folders/Scripts/prikkle.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

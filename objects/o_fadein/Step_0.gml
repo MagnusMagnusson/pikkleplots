@@ -45,7 +45,13 @@ if(stage >= BOOTUP_STAGES.fadein){
 
 if(stage == BOOTUP_STAGES.username){
 	var validKeys = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890-_ ";
-	if(keyboard_check_pressed(vk_left)){
+	if(keyboard_check_pressed(vk_enter)){
+		if(is_profanity(user)){
+			mess = "Remember the human. Please enter another name";
+		} else {
+			save_init(user);
+		}
+	} else if(keyboard_check_pressed(vk_left)){
 		cursor_pos = max(1, cursor_pos - 1);
 	} else if(keyboard_check_pressed(vk_right)){
 		cursor_pos = min(string_length(user) + 1, cursor_pos + 1);
@@ -54,11 +60,11 @@ if(stage == BOOTUP_STAGES.username){
 			if(keyboard_lastkey == vk_backspace){
 				if(cursor_pos != 0){
 					user = string_delete(user, cursor_pos-1, 1);
-					cursor_pos--;
+					cursor_pos = max(0,cursor_pos - 1);
 				}
 			} else if(string_pos(keyboard_lastchar, validKeys)){
 				user = string_insert(keyboard_lastchar, user, cursor_pos);
-				cursor_pos++;
+				cursor_pos = max(2, cursor_pos + 1);
 			}
 		}
 	}

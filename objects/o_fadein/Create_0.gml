@@ -12,6 +12,7 @@ countdown = -1;
 user = environment_get_variable("USERNAME");
 cursor_pos = 0;
 alph = 0;
+mess = "";
 
 console_log = [];
 
@@ -81,7 +82,7 @@ console_schedule = [
 	["               .:*%@@@*-.=@@@@@@@@%%@@@@@%+:-=*##@@@@*+%@@@=-+#%@@@@*::::::::::----------:", 1],
 	["                 ..::.....=**+=--:.:=+=-:........:-+*%%%#=:::::::---:::::::::::::---------", 1],
 	["", 60],
-	[working_directory + "> run prikkles.bootup", 30],
+	[working_directory + "> run prinkles.bootup", 30],
 	[working_directory + "> mount P", 5],
 	[working_directory + "> cd P:", 5],
 	["P: > cd pikkles", 5],
@@ -89,10 +90,10 @@ console_schedule = [
 	["P: > simnet connect $MAINFRAME_URL", 5],
 	["Connecting to mainframe", 60],
 	["Mainframe connected", 5],
-	["P: > run prikkles.sim", 30],
+	["P: > run prinkles.sim", 30],
 	["", 5],
 	["**************************", 5],
-	["	    PRIKKLE PLOTS", 5],
+	["	    prinkle PLOTS", 5],
 	[" A COMMUNITY SIMULATION BY Mr. MAGNUS    ", 5],
 	["**************************", 15],
 	["loading...", 300],
