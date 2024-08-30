@@ -14,10 +14,14 @@ if(countdown == 0){
 			break;
 		}
 		case BOOTUP_STAGES.username: {
-			keyboard_string = user;
-			cursor_pos = 1 + string_length(user);
-			countdown = -1;
-			break;
+			if(load()){
+				game_end();
+			} else {
+				keyboard_string = user;
+				cursor_pos = 1 + string_length(user);
+				countdown = -1;
+				break;
+			}
 		}
 	}
 }

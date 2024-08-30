@@ -1,12 +1,12 @@
 {
   "$GMScript":"",
-  "%Name":"macros",
+  "%Name":"scr_player_world",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"macros",
+  "name":"scr_player_world",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "name":"world",
+    "path":"folders/Scripts/world.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

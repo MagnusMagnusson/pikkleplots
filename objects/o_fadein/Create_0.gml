@@ -4,7 +4,7 @@ enum BOOTUP_STAGES {
 	fadein,
 	username
 }
-
+delete_count = 0;
 bottom = 0;
 top = 0;
 stage = BOOTUP_STAGES.console;
@@ -17,6 +17,9 @@ mess = "";
 console_log = [];
 
 console_schedule = [
+	["Press <Space> to skip boot sequence.", 3*60],
+	["", 10],
+	["", 10],
 	["Viking BIOS 4.0 Release 2.8.24 - Copyright 1995-2024 GMC Software LLC", 20],
 	["All Rights Reserved", 20],
 	["Initiating boot sequence...", 60],
