@@ -48,6 +48,7 @@
     {"id":{"name":"o_text_input","path":"objects/o_text_input/o_text_input.yy",},},
     {"id":{"name":"rm_start","path":"rooms/rm_start/rm_start.yy",},},
     {"id":{"name":"macros","path":"scripts/macros/macros.yy",},},
+    {"id":{"name":"scr_name_generator","path":"scripts/scr_name_generator/scr_name_generator.yy",},},
     {"id":{"name":"scr_prinkle","path":"scripts/scr_prinkle/scr_prinkle.yy",},},
     {"id":{"name":"scr_profanities","path":"scripts/scr_profanities/scr_profanities.yy",},},
     {"id":{"name":"scr_save","path":"scripts/scr_save/scr_save.yy",},},
