@@ -9,7 +9,7 @@ if(stage == BOOTUP_STAGES.console){
 	}
 }
 
-if(stage >= BOOTUP_STAGES.username){	
+if(stage == BOOTUP_STAGES.username){	
 	draw_set_alpha(alph);
 	alph += 0.01;
 	draw_set_font(fnt_main_menu);
@@ -22,3 +22,4 @@ if(stage >= BOOTUP_STAGES.username){
 	draw_text((room_width / 2), (room_height / 2) + string_height("A"), mess);
 	draw_set_alpha(1);
 }
+

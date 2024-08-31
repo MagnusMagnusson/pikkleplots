@@ -2,7 +2,8 @@ enum BOOTUP_STAGES {
 	console,
 	black,
 	fadein,
-	username
+	username,
+	egg
 }
 delete_count = 0;
 bottom = 0;

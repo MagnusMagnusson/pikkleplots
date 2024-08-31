@@ -1,4 +1,5 @@
 function save(name, _id = undefined, prinkle = undefined, noWorld = false){	
+	var d = {};
 	var buff = buffer_create(1, buffer_grow, 1);
 	hash = current_time & 0xFFFFFFFF;
 	if(is_undefined(_id)){
@@ -10,24 +11,30 @@ function save(name, _id = undefined, prinkle = undefined, noWorld = false){
 	buffer_write(buff, buffer_u8, save_version);
 	hash ^= _id;
 	buffer_write(buff, buffer_u32, _id);
+	d[$"player_id"] = _id;
+	d[$"player_name"] = name;
 	buffer_write(buff, buffer_string, name);
 	if(is_undefined(prinkle)){
 		prinkle = new Prinkle();
 		prinkle.generate();
 	}
 	hash ^= prinkle._id;
+	d[$"prinkle_id"] = prinkle._id;
 	buffer_write(buff, buffer_u32, prinkle._id);
 	
 	if(!noWorld){
 		buffer_write(buff, buffer_u8,  0);
+		d[$"world"] = [];
 	} else {
 		buffer_write(buff, buffer_u8,  1);
+		d[$"world"] = [];
 	}
 	buffer_write(buff, buffer_u32, 123456789);
 	buffer_write(buff, buffer_u32, hash ^ HASH_PI);
 	
 	buffer_save(buff, filename_sanitize(prinkle.name)+".prinkle");
 	buffer_delete(buff);
+	return d;
 }
 
 function filename_sanitize(str){
@@ -42,60 +49,37 @@ function load(){
 	show_debug_message(42);
 	file_find_close();
 	if(f != ""){
-		show_debug_message(f);
-		show_debug_message(45);
+		var d = {};
 		var buff = buffer_load(f);
 		if(buffer_read(buff, buffer_string) != "Prinkle"){
 			show_message("Unrecognized file format: " + f);
 			return false;
 		}
-		show_debug_message(51);
 		var timestamp = buffer_read(buff, buffer_u32);
+		d[$"timestamp"] = timestamp;
 		var saveVersion = buffer_read(buff, buffer_u8);
+		d[$"saveVersion"] = saveVersion;
 		var playerID = buffer_read(buff, buffer_u32);
+		d[$"player_id"] = playerID;
 		var playerName = buffer_read(buff, buffer_string);
+		d[$"player_name"] = playerName;
 		var prinkleId = buffer_read(buff, buffer_u32);
+		d[$"prinkle_id"] = prinkleId;
 		var world_present = buffer_read(buff, buffer_u8);
+		d[$"world"] = [];
 		
-		show_debug_message(59);
 		var expected_hash = timestamp ^ saveVersion ^ playerID ^ prinkleId ^ HASH_PI;
-		show_debug_message(61);
 		var validation = buffer_read(buff, buffer_u32);
 		
 		var hash = buffer_read(buff, buffer_u32);
-		show_debug_message(62);
 		if(hash == expected_hash){
-			show_debug_message("AAA");
-			show_debug_message({
-				"date":timestamp,
-				"SV": saveVersion,
-				"PID": playerID,
-				"PN": playerName,
-				"PRINKLE": prinkleId,
-				"WORLD": world_present,
-				"EX HASH": expected_hash,
-				"HASH": hash
-			});
-			return true;
+			return d;
 		} else {
-			show_debug_message(77);
-			
-			show_debug_message({
-				"date":date,
-				"SV": saveVersion,
-				"PID": playerID,
-				"PN": playerName,
-				"PRINKLE": prinkleId,
-				"WORLD": world_present,
-				"EX HASH": expected_hash,
-				"HASH": hash
-			});
 			show_message("Corrupted file: " + f);
-			return false;
+			return undefined;
 		}
 	}
-	show_debug_message(81);
-	return false;
+	return undefined;
 }
 
 /*

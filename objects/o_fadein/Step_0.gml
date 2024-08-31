@@ -14,7 +14,7 @@ if(countdown == 0){
 			break;
 		}
 		case BOOTUP_STAGES.username: {
-			if(load()){
+			if(!is_undefined(load())){
 				game_end();
 			} else {
 				keyboard_string = user;
@@ -53,7 +53,10 @@ if(stage == BOOTUP_STAGES.username){
 		if(is_profanity(user)){
 			mess = "Remember the human. Please enter another name";
 		} else {
-			save(user);
+			var dat = save(user);
+			instance_create_layer(room_width/2, room_height/2, "Instances_1", o_egg);
+			ourWorld.load(dat);
+			stage++;
 		}
 	} else if(keyboard_check_pressed(vk_left)){
 		cursor_pos = max(1, cursor_pos - 1);

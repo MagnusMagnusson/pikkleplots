@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_save",
+  "%Name":"scr_text_bb",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_save",
+  "name":"scr_text_bb",
   "parent":{
-    "name":"saves",
-    "path":"folders/Scripts/saves.yy",
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
