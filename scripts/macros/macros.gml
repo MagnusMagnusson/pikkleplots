@@ -4,4 +4,10 @@
 #macro save_version_min 1
 #macro HASH_PI 0x314159
 
+#macro WORLD_WIDTH 100
+#macro WORLD_HEIGHT 100
+
+room_set_width(rm_plot, WORLD_WIDTH * 64);
+room_set_height(rm_plot, WORLD_HEIGHT * 64);
+
 randomize();

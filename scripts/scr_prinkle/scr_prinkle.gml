@@ -8,8 +8,8 @@ function Prinkle() constructor{
 	static generate = function(iid = undefined){
 		_id = is_undefined(iid) ? irandom(0xFFFFFFFF) : iid;
 		name = random_name(_id);
-		color_1 = irandom(_id >> 8 & #FFFFFF);
-		color_2 = irandom((~_id) >> 8 & #FFFFFF);
+		color_1 = _id >> 8 & #FFFFFF;
+		color_2 = (~_id) >> 8 & #FFFFFF;
 		pattern = 0;
 	}
 }

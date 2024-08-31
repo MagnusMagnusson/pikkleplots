@@ -14,8 +14,12 @@ if(countdown == 0){
 			break;
 		}
 		case BOOTUP_STAGES.username: {
+			var save_dat = load();
 			if(!is_undefined(load())){
-				game_end();
+				ourWorld.load(save_dat);
+				show_debug_message(save_dat);
+				show_debug_message(ourWorld);
+				loadWorld(ourWorld); 
 			} else {
 				keyboard_string = user;
 				cursor_pos = 1 + string_length(user);
