@@ -1,4 +1,4 @@
-function save(name, _id = undefined, prinkle = undefined, noWorld = false){	
+function save(name, _id = undefined, prinkle = undefined, world = []){	
 	var d = {};
 	var buff = buffer_create(1, buffer_grow, 1);
 	hash = current_time & 0xFFFFFFFF;
@@ -22,12 +22,37 @@ function save(name, _id = undefined, prinkle = undefined, noWorld = false){
 	d[$"prinkle_id"] = prinkle._id;
 	buffer_write(buff, buffer_u32, prinkle._id);
 	
-	if(!noWorld){
+	if(array_length(world) == 0){
 		buffer_write(buff, buffer_u8,  0);
-		d[$"world"] = [];
+		d[$"world"] = world;
 	} else {
-		buffer_write(buff, buffer_u8,  1);
-		d[$"world"] = [];
+		var trueLength = 0;
+		for(var i = 0; i < array_length(world); i++){
+			if(world[i] != 0){
+				trueLength++;
+			}
+		}
+		if(trueLength == 0){
+			buffer_write(buff, buffer_u8,  0);
+		} else {
+			buffer_write(buff, buffer_u8,  1);
+			buffer_write(buff, buffer_u32, trueLength);
+			hash ^= trueLength;
+			for(var i = 0; i < array_length(world); i++){
+				if(world[i] != 0){
+					var xx = i % WORLD_WIDTH;
+					var yy = i div WORLD_WIDTH;
+					show_debug_message(world[i]);
+					buffer_write(buff, buffer_u16,  world[i]);
+					buffer_write(buff, buffer_u8,  xx);
+					buffer_write(buff, buffer_u8,  yy);
+					hash ^= world[i];
+					hash ^= xx;
+					hash ^= yy;
+				}
+			}
+		}
+		d[$"world"] = world;
 	}
 	buffer_write(buff, buffer_u32, 123456789);
 	buffer_write(buff, buffer_u32, hash ^ HASH_PI);
@@ -66,13 +91,28 @@ function load(){
 		var prinkleId = buffer_read(buff, buffer_u32);
 		d[$"prinkle_id"] = prinkleId;
 		var world_present = buffer_read(buff, buffer_u8);
-		d[$"world"] = [];
+		var _hash = 0;
+		if(world_present){
+			var world = [];
+			var itemCount = buffer_read(buff, buffer_u32);
+			_hash ^= itemCount
+			for(var i = 0; i < itemCount; i++){
+				var _id = buffer_read(buff, buffer_u16);
+				var _x = buffer_read(buff, buffer_u8);
+				var _y = buffer_read(buff, buffer_u8);
+				_hash ^= _id ^ _x ^ _y;
+				array_push(world, {"_id":_id, "_x":_x,"_y":_y});
+			}
+			d[$"world"] = world;
+		} else {
+			d[$"world"] = [];
+		}
 		
-		var expected_hash = timestamp ^ saveVersion ^ playerID ^ prinkleId ^ HASH_PI;
+		var expected_hash = _hash ^ timestamp ^ saveVersion ^ playerID ^ prinkleId ^ HASH_PI;
 		var validation = buffer_read(buff, buffer_u32);
 		
 		var hash = buffer_read(buff, buffer_u32);
-		if(hash == expected_hash){
+		if(validation = 123456789 && hash == expected_hash){
 			return d;
 		} else {
 			show_message("Corrupted file: " + f);

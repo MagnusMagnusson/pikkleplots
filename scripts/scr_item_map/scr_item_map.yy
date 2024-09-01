@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_item_map",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_item_map",
+  "parent":{
+    "name":"items",
+    "path":"folders/Scripts/world/items.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

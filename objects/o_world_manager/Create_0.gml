@@ -1,4 +1,4 @@
-tileDraws = 0;
+tileDraws = -1;
 world = undefined;
 grid_alpha = 0;
 loadPercent = function(){
