@@ -3,8 +3,8 @@ draw_set_alpha(image_alpha);
 if(is_undefined(me)){
 	draw_sprite(sprite_index, 0, x, y);
 } else {
-	draw_sprite_ext(sprite_index, 0, x, y, image_xscale, image_yscale, 0, me.color_1, image_alpha);
-	draw_sprite_ext(sprite_index, 1, x, y, image_xscale, image_yscale, 0, c_white, image_alpha);
+	draw_sprite_ext(sprite_index, 0, x, y - 20*dsin(5*image_index), image_xscale, image_yscale, 90 * dsin(2 * image_index), me.color_1, image_alpha);
+	draw_sprite_ext(sprite_index, 1, x, y - 20*dsin(5*image_index), image_xscale, image_yscale, 90 * dsin(2 * image_index), c_white, image_alpha);
 	draw_set_halign(fa_center);
 	var x0, x1, y0, y1;
 	draw_set_font(fnt_prinkle_name);

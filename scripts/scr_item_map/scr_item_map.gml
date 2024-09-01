@@ -1,6 +1,8 @@
+var iid = 0;
 global.ITEMS = [
 	new Item("Grass", "Ground", "A soft patch of grass, with no other items on top", 0, undefined, 0),
 	new Item("River", "Ground", "A gentle stream", 1, o_river, 0),
+	new Item("Lake", "Ground", "A still pond", 2, o_lake, 0),
 ]
 
 

@@ -9,9 +9,9 @@ active =
 if(active){
 	draw_set_font(fnt_consola_big);
 	var sep = string_height("A");
-	var right_edge = camera_get_view_width(view_camera[0]);
+	var right_edge = display_get_gui_width();
 	var left_edge = right_edge - 1.5*string_width(" PLOT EDITOR ");
-	var bottom_edge = camera_get_view_height(view_camera[0]);
+	var bottom_edge = display_get_gui_height();
 	var height = bottom_edge * 0.1;
 	
 	var xx = window_mouse_get_x(); 

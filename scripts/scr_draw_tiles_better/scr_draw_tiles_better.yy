@@ -1,5 +1,5 @@
 {
-  "$GMScript":"v1",
+  "$GMScript":"",
   "%Name":"scr_draw_tiles_better",
   "isCompatibility":false,
   "isDnD":false,

@@ -43,7 +43,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.6.2.162",
+    "IDEVersion":"2024.4.1.152",
   },
   "name":"prikklePlots",
   "resources":[
@@ -59,6 +59,7 @@
     {"id":{"name":"o_egg","path":"objects/o_egg/o_egg.yy",},},
     {"id":{"name":"o_fadein","path":"objects/o_fadein/o_fadein.yy",},},
     {"id":{"name":"o_item_parent","path":"objects/o_item_parent/o_item_parent.yy",},},
+    {"id":{"name":"o_lake","path":"objects/o_lake/o_lake.yy",},},
     {"id":{"name":"o_level_editor","path":"objects/o_level_editor/o_level_editor.yy",},},
     {"id":{"name":"o_login_humming","path":"objects/o_login_humming/o_login_humming.yy",},},
     {"id":{"name":"o_prinkle","path":"objects/o_prinkle/o_prinkle.yy",},},

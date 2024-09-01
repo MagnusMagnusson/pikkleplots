@@ -2,9 +2,9 @@ if(active){
 	draw_set_color(col_bottom_blue);
 	draw_set_font(fnt_consola_big);
 	draw_set_alpha(1);
-	var right_edge = camera_get_view_width(view_camera[0]);
+	var right_edge = display_get_gui_width();
 	var left_edge = right_edge - 1.5*string_width(" PLOT EDITOR ");
-	var bottom_edge = camera_get_view_height(view_camera[0]);
+	var bottom_edge = display_get_gui_height();
 	var height = bottom_edge * 0.1;
 	draw_rectangle(left_edge, 0, right_edge, bottom_edge, false);
 	

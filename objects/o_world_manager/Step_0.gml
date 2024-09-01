@@ -14,11 +14,15 @@ if(state == STATE.loading){
 		if(tileDraws <= WORLD_WIDTH + WORLD_HEIGHT){
 			tileDraws++;
 			grid_alpha = min(1, grid_alpha + 0.005);
-			if(tileDraws <= WORLD_WIDTH){
-				for(var i = 0; i < WORLD_HEIGHT; i++){
-					var xx = tileDraws;
-					var yy = i;
+			for(var yy = 0; yy < WORLD_HEIGHT; yy++){
+				var xx = tileDraws - yy;
+				if(xx >= 0 && xx < WORLD_WIDTH){
+					//new valid tile
 					var item_id = world.getItemAt(xx,yy);
+					if(item_id < 0){
+						continue;
+					}
+					//Find and add the object from the item array
 					var item = global.ITEM_ARRAY[item_id];
 					if(item.object){
 						var ii = instance_create_layer(xx*64,yy*64, "Instances", item.object);

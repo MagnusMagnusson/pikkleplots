@@ -6,3 +6,10 @@ clicked = false;
 hovering = false;
 
 image_alpha = -0.5;
+
+moving = false;
+tx = x;
+ty = y;
+image_index = 0;
+image_speed = 0;
+alarm[0] = 90 + irandom(5 * 60);

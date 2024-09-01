@@ -30,8 +30,8 @@ function World() constructor {
 	
 	static flattenWorld = function(){
 		var dd = [];
-		for(var i = 0; i < WORLD_WIDTH; i++){
-			for(var j = 0; j < WORLD_HEIGHT; j++){
+		for(var j = 0; j < WORLD_HEIGHT; j++){
+			for(var i = 0; i < WORLD_WIDTH; i++){
 				array_push(dd, self.getItemAt(i,j));
 			}
 		}
