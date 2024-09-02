@@ -10,6 +10,15 @@ global.ITEMS = [
 	new Item("Cobblestone", "Ground", "A still pond", 7, o_cobblestone, 0),
 	new Item("Diamond Tile", "Ground", "A still pond", 8, o_diamond_tile, 0),
 	new Item("Well", "Ground", "A still pond", 9, o_well, 0),
+	new Item("Bush", "Ground", "A still pond", 10, o_bush, 0),
+	new Item("Rose Bush", "Ground", "A still pond", 11, o_rose_bush, 0),
+	new Item("Dark Door", "Ground", "A still pond", 12, o_ddoor, 0),
+	new Item("Light Door", "Ground", "A still pond", 13, o_ldoor, 0),
+	new Item("Tree", "Ground", "A still pond", 14, o_tree, 0),
+	new Item("Television", "Ground", "A still pond", 15, o_television, 0),
+	new Item("Bed", "Ground", "A still pond", 16, o_bed, 0),
+	new Item("Dirt", "Ground", "A still pond", 17, o_dirt, 0),
+	new Item("Beets", "Ground", "A still pond", 18, o_beets, 0),
 ]
 
 

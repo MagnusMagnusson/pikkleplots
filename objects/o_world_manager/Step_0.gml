@@ -2,13 +2,15 @@ if(state == STATE.loading){
 	if(is_undefined(world)){
 		if(!is_undefined(global.toLoad)){
 			world = global.toLoad;
+			o_camera.x = room_width / 2;
+			o_camera.y = room_height / 2;
 			if(!is_undefined(world.prinkle)){
 				var p = instance_create_layer(room_width / 2, room_height / 2, "Prinkles", o_prinkle);
 				p.me = world.prinkle;
 			} else {
 				get_cloud_prinkles(function(){
 					for(var i = 0; i < array_length(global.network_prinkles); i++){
-						var p = instance_create_layer(room_width / 2 + random_range(-100, 100), room_height / 2 + random_range(-100, 100) , "Prinkles", o_prinkle);
+						var p = instance_create_layer(room_width / 2 + random_range(-400, 400), room_height / 2 + random_range(-400, 400) , "Prinkles", o_prinkle);
 						p.me = new Prinkle();
 						p.me.generate(global.network_prinkles[i][$"id"]);
 						p.me.owner = global.network_prinkles[i][$"owner"]+"'s";
