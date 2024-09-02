@@ -22,6 +22,7 @@ if(state == STATE.loading){
 					if(item_id < 0){
 						continue;
 					}
+					
 					//Find and add the object from the item array
 					var item = global.ITEM_ARRAY[item_id];
 					if(item.object){
@@ -59,3 +60,6 @@ smallestX = max(0, xx div 64 - 2);
 largestX = min(WORLD_WIDTH, 2+ (xx + ww) div 64);
 smallestY = max(0, yy div 64 - 2);
 largestY = min(WORLD_HEIGHT, 2 + (yy + hh) div 64);
+
+instance_deactivate_object(o_item_parent);
+instance_activate_region((smallestX - 1) * 64, (smallestY-1) * 64, (largestX+1) * 64, (1 + largestY) * 64, true)

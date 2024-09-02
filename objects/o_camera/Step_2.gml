@@ -1,2 +1,2 @@
-	xclick = display_mouse_get_x();
-	yclick = display_mouse_get_y();
+xclick = display_mouse_get_x();
+yclick = display_mouse_get_y();

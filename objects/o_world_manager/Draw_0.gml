@@ -1,4 +1,3 @@
-
 draw_set_alpha(1);
 for(var yy = smallestY; yy < largestY; yy++){
 	for(var xx = smallestX; min(largestX, xx < WORLD_WIDTH - WORLD_HEIGHT - yy + tileDraws); xx++){

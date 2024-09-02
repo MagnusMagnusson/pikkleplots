@@ -1,9 +1,9 @@
 image_alpha += 0.01;
 
 if(!moving){
-	image_index = 0;
+	index = 0;
 } else {
-	image_index++;
+	index++;
 	if(point_distance(x,y,tx,ty) > 4){
 		move_towards_point(tx, ty, 3);
 	} else {
