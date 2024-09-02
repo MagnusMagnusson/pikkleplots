@@ -1,4 +1,13 @@
-image_alpha += 0.01;
+if(o_world_manager.state != STATE.unloading){
+	image_alpha += 0.01;
+} else {
+	image_alpha = min(1, image_alpha);
+	image_alpha -= 0.01;
+	if(image_alpha <= 0){
+		instance_destroy();
+	}
+}
+
 
 if(!moving){
 	index = 0;

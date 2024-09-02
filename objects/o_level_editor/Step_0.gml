@@ -40,41 +40,43 @@ if(active){
 		x1 = mouse_x div 64;
 		y1 = mouse_y div 64;
 	}
-}
-
-if(selected != -1){
-	var minx = min(x0, x1);
-	var maxx = max(x0, x1);
-	var miny = min(y0, y1);
-	var maxy = max(y0, y1);
-	if(mouse_check_button_released(mb_left) && x0 >= 0){
-		var changed = false;
-		for(var i = minx; i <= maxx; i++){
-			for(var j = miny; j <= maxy; j++){
-				var item = global.ITEM_ARRAY[selected];
-				var currently_there = o_world_manager.world.world[i][j];
-				if(currently_there == selected){
-					continue;
-				}
-				o_world_manager.world.world[i][j] = selected;
-				with(o_item_parent){
-					if(x div 64 == i && y div 64 == j && object_index != item.object){
+	
+	if(selected != -1){
+		var minx = min(x0, x1);
+		var maxx = max(x0, x1);
+		var miny = min(y0, y1);
+		var maxy = max(y0, y1);
+		if(mouse_check_button_released(mb_left) && x0 >= 0){
+			var changed = false;
+			for(var i = minx; i <= maxx; i++){
+				for(var j = miny; j <= maxy; j++){
+					var item = global.ITEM_ARRAY[selected];
+					var currently_there = o_world_manager.world.world[i][j];
+					if(currently_there == selected){
+						continue;
+					}
+					o_world_manager.world.world[i][j] = selected;
+					with(o_item_parent){
+						if(x div 64 == i && y div 64 == j && object_index != item.object){
+							changed = true;
+							instance_destroy();
+						}
+					}
+				
+					if(item.object){
 						changed = true;
-						instance_destroy();
+						var ii = instance_create_layer(i*64,j*64, "Instances", item.object);
+						ii._id = selected;
 					}
 				}
-				
-				if(item.object){
-					changed = true;
-					var ii = instance_create_layer(i*64,j*64, "Instances", item.object);
-					ii._id = selected;
-				}
+			}
+			if(changed){
+				show_debug_message("Saved!");
+				var d  = save(o_world_manager.world.player_name, o_world_manager.world.player_id, o_world_manager.world.prinkle, o_world_manager.world.flattenWorld());
+				show_debug_message(d);
 			}
 		}
-		if(changed){
-			show_debug_message("Saved!");
-			var d  = save(o_world_manager.world.player_name, o_world_manager.world.player_id, o_world_manager.world.prinkle, o_world_manager.world.flattenWorld());
-			show_debug_message(d);
-		}
 	}
+} else{
+	selected = -1;
 }

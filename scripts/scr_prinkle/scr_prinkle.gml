@@ -4,6 +4,7 @@ function Prinkle() constructor{
 	color_1 = c_white;
 	color_2 = c_black;
 	pattern = 0;
+	owner = ""
 	
 	static generate = function(iid = undefined){
 		_id = is_undefined(iid) ? irandom(0xFFFFFFFF) : iid;

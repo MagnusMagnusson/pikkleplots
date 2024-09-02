@@ -3,8 +3,18 @@ if(state == STATE.loading){
 		if(!is_undefined(global.toLoad)){
 			world = global.toLoad;
 			if(!is_undefined(world.prinkle)){
-				var p = instance_create_layer(room_width / 2, room_height / 2, "Instances", o_prinkle);
+				var p = instance_create_layer(room_width / 2, room_height / 2, "Prinkles", o_prinkle);
 				p.me = world.prinkle;
+			} else {
+				get_cloud_prinkles(function(){
+					for(var i = 0; i < array_length(global.network_prinkles); i++){
+						var p = instance_create_layer(room_width / 2 + random_range(-100, 100), room_height / 2 + random_range(-100, 100) , "Prinkles", o_prinkle);
+						p.me = new Prinkle();
+						p.me.generate(global.network_prinkles[i][$"id"]);
+						p.me.owner = global.network_prinkles[i][$"owner"]+"'s";
+						show_debug_message(p.me);
+					}
+				});
 			}
 			show_debug_message("found world to load");
 			show_debug_message(global.toLoad);
@@ -37,12 +47,17 @@ if(state == STATE.loading){
 		}
 	}
 } else if(state == STATE.unloading){
+	instance_activate_all();
+	with(o_item_parent){
+		instance_destroy();
+	}
 	if(tileDraws >= 0){
 		tileDraws--;
 		grid_alpha = min(1, grid_alpha + 0.005);
 	} 
 	if(tileDraws <= 0){
-		 state = STATE.loading;
+		world = undefined;
+		state = STATE.loading;
 	}
 } else if(state == STATE.wait){
 	grid_alpha -= 0.05;

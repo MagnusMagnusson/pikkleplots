@@ -8,8 +8,12 @@ function World() constructor {
 	static load = function(dat){
 		player_id = dat[$"player_id"];
 		player_name = dat[$"player_name"];
-		prinkle = new Prinkle();
-		prinkle.generate(dat[$"prinkle_id"]);
+		if(dat[$"prinkle_id"] >= 0){
+			prinkle = new Prinkle();
+			prinkle.generate(dat[$"prinkle_id"]);
+		} else{
+			prinkle = undefined;
+		}
 		world = self.generateGrid(dat[$"world"]);
 		loaded = true;
 	}
@@ -66,5 +70,9 @@ function loadWorld(world){
 }
 
 globalvar ourWorld;
+globalvar plazaWorld;
 
 ourWorld = new World();
+plazaWorld = generate_plaza();
+
+

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="46.960186mm"
+   height="20.312973mm"
+   viewBox="0 0 46.960186 20.312973"
+   version="1.1"
+   id="svg1"
+   inkscape:export-filename="home.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Lag 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-58.229402,-120.32)">
+    <rect
+       style="fill:#808080;stroke:#000000;stroke-width:0.306001;stroke-opacity:1"
+       id="rect3"
+       width="46.654182"
+       height="20.006969"
+       x="58.382404"
+       y="120.473"
+       ry="10.003485" />
+    <text
+       xml:space="preserve"
+       style="font-size:6.35px;font-family:Slackey;-inkscape-font-specification:Slackey;display:inline;fill:#000000;stroke-width:0.306001"
+       x="69.12117"
+       y="128.36066"
+       id="text1-9"><tspan
+         sodipodi:role="line"
+         style="fill:#000000;stroke-width:0.306"
+         x="69.12117"
+         y="128.36066"
+         id="tspan3-6">Head</tspan><tspan
+         sodipodi:role="line"
+         style="fill:#000000;stroke-width:0.306"
+         x="69.12117"
+         y="136.29816"
+         id="tspan4"> Home</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:6.35px;font-family:Slackey;-inkscape-font-specification:Slackey;display:inline;fill:#ffff00;stroke-width:0.306001"
+       x="69.474091"
+       y="128.5006"
+       id="text1-0-1"><tspan
+         sodipodi:role="line"
+         style="fill:#ffff00;stroke-width:0.306"
+         x="69.474091"
+         y="128.5006"
+         id="tspan2-7-1">Head</tspan><tspan
+         sodipodi:role="line"
+         style="fill:#ffff00;stroke-width:0.306"
+         x="69.474091"
+         y="136.4381"
+         id="tspan3-2-0"> Home</tspan></text>
+  </g>
+</svg>

@@ -17,3 +17,4 @@ smallestX = 0;
 largestX = WORLD_WIDTH;
 smallestY = 0;
 largestY = WORLD_HEIGHT;
+global.selected_prinkle = -1;

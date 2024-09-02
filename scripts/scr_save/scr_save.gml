@@ -58,9 +58,11 @@ function save(name, _id = undefined, prinkle = undefined, world = []){
 	buffer_write(buff, buffer_u32, hash ^ HASH_PI);
 	
 	buffer_save(buff, filename_sanitize(prinkle.name)+".prinkle");
+	save_to_cloud(name, _id, prinkle._id, buff);
 	buffer_delete(buff);
 	return d;
 }
+
 
 function filename_sanitize(str){
 	str = string_replace(str, " ","_");
@@ -74,54 +76,57 @@ function load(){
 	show_debug_message(42);
 	file_find_close();
 	if(f != ""){
-		var d = {};
-		var buff = buffer_load(f);
-		if(buffer_read(buff, buffer_string) != "Prinkle"){
-			show_message("Unrecognized file format: " + f);
-			return false;
-		}
-		var timestamp = buffer_read(buff, buffer_u32);
-		d[$"timestamp"] = timestamp;
-		var saveVersion = buffer_read(buff, buffer_u8);
-		d[$"saveVersion"] = saveVersion;
-		var playerID = buffer_read(buff, buffer_u32);
-		d[$"player_id"] = playerID;
-		var playerName = buffer_read(buff, buffer_string);
-		d[$"player_name"] = playerName;
-		var prinkleId = buffer_read(buff, buffer_u32);
-		d[$"prinkle_id"] = prinkleId;
-		var world_present = buffer_read(buff, buffer_u8);
-		var _hash = 0;
-		if(world_present){
-			var world = [];
-			var itemCount = buffer_read(buff, buffer_u32);
-			_hash ^= itemCount
-			for(var i = 0; i < itemCount; i++){
-				var _id = buffer_read(buff, buffer_u16);
-				var _x = buffer_read(buff, buffer_u8);
-				var _y = buffer_read(buff, buffer_u8);
-				_hash ^= _id ^ _x ^ _y;
-				array_push(world, {"_id":_id, "_x":_x,"_y":_y});
-			}
-			d[$"world"] = world;
-		} else {
-			d[$"world"] = [];
-		}
-		
-		var expected_hash = _hash ^ timestamp ^ saveVersion ^ playerID ^ prinkleId ^ HASH_PI;
-		var validation = buffer_read(buff, buffer_u32);
-		
-		var hash = buffer_read(buff, buffer_u32);
-		if(validation = 123456789 && hash == expected_hash){
-			return d;
-		} else {
-			show_message("Corrupted file: " + f);
-			return undefined;
-		}
+		return loadFile(f);
 	}
 	return undefined;
 }
 
+function loadFile(f){
+	var d = {};
+	var buff = buffer_load(f);
+	if(buffer_read(buff, buffer_string) != "Prinkle"){
+		show_message("Unrecognized file format: " + f);
+		return false;
+	}
+	var timestamp = buffer_read(buff, buffer_u32);
+	d[$"timestamp"] = timestamp;
+	var saveVersion = buffer_read(buff, buffer_u8);
+	d[$"saveVersion"] = saveVersion;
+	var playerID = buffer_read(buff, buffer_u32);
+	d[$"player_id"] = playerID;
+	var playerName = buffer_read(buff, buffer_string);
+	d[$"player_name"] = playerName;
+	var prinkleId = buffer_read(buff, buffer_u32);
+	d[$"prinkle_id"] = prinkleId;
+	var world_present = buffer_read(buff, buffer_u8);
+	var _hash = 0;
+	if(world_present){
+		var world = [];
+		var itemCount = buffer_read(buff, buffer_u32);
+		_hash ^= itemCount
+		for(var i = 0; i < itemCount; i++){
+			var _id = buffer_read(buff, buffer_u16);
+			var _x = buffer_read(buff, buffer_u8);
+			var _y = buffer_read(buff, buffer_u8);
+			_hash ^= _id ^ _x ^ _y;
+			array_push(world, {"_id":_id, "_x":_x,"_y":_y});
+		}
+		d[$"world"] = world;
+	} else {
+		d[$"world"] = [];
+	}
+		
+	var expected_hash = _hash ^ timestamp ^ saveVersion ^ playerID ^ prinkleId ^ HASH_PI;
+	var validation = buffer_read(buff, buffer_u32);
+		
+	var hash = buffer_read(buff, buffer_u32);
+	if(validation = 123456789 && hash == expected_hash){
+		return d;
+	} else {
+		show_message("Corrupted file: " + f);
+		return undefined;
+	}
+}
 /*
 FORMAT:
 8 bytes - the string "prinkle", followed by a null
