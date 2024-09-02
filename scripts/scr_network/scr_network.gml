@@ -1,7 +1,7 @@
-#macro useProdServer false
+#macro useProdServer true
 #macro devURL "http://localhost:3000"
-#macro prodURL "prinkle.mmagnusson.net"
-#macro Prinkleurl useProdServer ? prodUrl : devURL
+#macro prodURL "https://gmcjam.mmagnusson.net"
+#macro Prinkleurl (useProdServer ? prodURL : devURL)
 
 function save_to_cloud(name, player_id, prinkle_id, buffer){
 	var url = Prinkleurl+"/prinkles/save?name="+name+"&pid="+string(player_id)+"&prinkle="+string(prinkle_id);
@@ -11,14 +11,14 @@ function save_to_cloud(name, player_id, prinkle_id, buffer){
 	var map = ds_map_create();
 	ds_map_add(map, "Content-Length", string(buffer_get_size(data)));
 	ds_map_add(map, "User-Agent", "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36");
-	o_networking.save_to_cloud = http_request(url, "POST", map, data);
+	o_networking.save_to_cloud_id = http_request(url, "POST", map, data);
 	ds_map_destroy(map);
 }
 
 global.network_prinkles = [];
 
 function get_cloud_prinkles(callback){
-	var url = Prinkleurl+"/prinkles/list";
+	var url = Prinkleurl+"/prinkles/list?t=a";
 	o_networking.load_prinkle_list = http_get(url);
 	o_networking.load_prinkle_callback = callback;
 }

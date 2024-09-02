@@ -10,8 +10,9 @@ if(ds_map_find_value(async_load, "id") == load_prinkle_list){
 } else if (ds_map_find_value(async_load, "id") == load_prinkle_world){
 		if(ds_map_find_value(async_load, "status") == 0){
 		if(!is_undefined(load_prinkle_world_callback)){
-			show_message("File loaded");
 			load_prinkle_world_callback();
 		}
 	}
+} else if (ds_map_find_value(async_load, "id") == save_to_cloud_id){
+	var data = ds_map_find_value(async_load, "result");
 }
