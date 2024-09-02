@@ -10,7 +10,7 @@ if(state == STATE.loading){
 			} else {
 				get_cloud_prinkles(function(){
 					for(var i = 0; i < array_length(global.network_prinkles); i++){
-						var p = instance_create_layer(room_width / 2 + random_range(-400, 400), room_height / 2 + random_range(-400, 400) , "Prinkles", o_prinkle);
+						var p = instance_create_layer(room_width / 2 +  random_range(-400, 400), room_height / 2 + random_range(-400, 400) , "Prinkles", o_prinkle);
 						p.me = new Prinkle();
 						p.me.generate(global.network_prinkles[i][$"id"]);
 						p.me.owner = global.network_prinkles[i][$"owner"]+"'s";
